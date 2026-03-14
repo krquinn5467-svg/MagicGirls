@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd7075ee4d73f84d9b520c9244462c0, type: 3}
+  m_Name: Activity_Recreation
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGirls.Data.ActivityDefinitionSO
+  activityType: 4
+  displayName: Recreation
+  description: Have fun and socialize. Boosts morale and charm.
+  icon: {fileID: 0}
+  nightOnly: 0
+  statModifiers:
+  - targetType: 0
+    baseStat: 5
+    magicalStat: 0
+    dieType: 4
+    diceCount: 1
+    flatModifier: 1
+  staminaCost: 0
+  moraleChange: 3
+  goldGain: 0
+  experienceGain: 5
+  injuryDC: 12

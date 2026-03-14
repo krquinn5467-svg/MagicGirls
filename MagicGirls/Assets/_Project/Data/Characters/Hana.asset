@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd72a04cf7f524b43b26254b8c7f73d4, type: 3}
+  m_Name: Hana
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGirls.Data.CharacterTemplateSO
+  characterName: Hana
+  backstory: A hardworking girl with a heart of gold. She always puts others before
+    herself.
+  portrait: {fileID: 0}
+  battleSprite: {fileID: 0}
+  startingSTR: 11
+  startingDEX: 11
+  startingCON: 12
+  startingINT: 12
+  startingWIS: 13
+  startingCHA: 13
+  startingMagicPower: 12
+  startingMagicAffinity: 12
+  startingCorruption: 0
+  startingMorale: 16
+  startingHP: 22
+  startingStamina: 12
+  defaultTraits: 0400000009000000

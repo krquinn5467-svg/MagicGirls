@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106e758584664cc408610075bd4b0b7c, type: 3}
+  m_Name: Monster_Knight
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGirls.Data.MonsterTemplateSO
+  monsterName: Shadow Knight
+  description: An armored specter wielding a dark blade.
+  sprite: {fileID: 0}
+  baseHP: 35
+  strength: 16
+  dexterity: 10
+  constitution: 14
+  magicPower: 12
+  attackType: 5
+  attackDie: 8
+  attackDiceCount: 1
+  attackBonus: 3
+  armorClass: 15
+  weaknesses: 04000000
+  resistances: 0000000005000000
+  difficultyRating: 4
+  experienceReward: 100
+  goldReward: 30

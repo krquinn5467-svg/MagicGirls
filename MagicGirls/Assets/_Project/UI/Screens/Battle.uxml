@@ -1,0 +1,50 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Style src="../Theme/Theme.uss" />
+    <ui:Style src="Battle.uss" />
+
+    <ui:VisualElement class="screen" name="battle-screen">
+
+        <!-- Battle Header -->
+        <ui:VisualElement class="battle-header">
+            <ui:Label name="battle-title" text="Monster Battle!" class="header-text" />
+            <ui:Label name="round-label" text="Round 0" class="sub-header" />
+        </ui:VisualElement>
+
+        <!-- Arena: Player team vs Enemy team -->
+        <ui:VisualElement class="arena">
+
+            <!-- Player Side -->
+            <ui:VisualElement class="team-side player-side">
+                <ui:Label text="Your Team" class="team-label player-label" />
+                <ui:VisualElement name="player-fighters" class="fighters-container" />
+            </ui:VisualElement>
+
+            <!-- VS Divider -->
+            <ui:VisualElement class="vs-divider">
+                <ui:Label text="VS" class="vs-text" />
+            </ui:VisualElement>
+
+            <!-- Enemy Side -->
+            <ui:VisualElement class="team-side enemy-side">
+                <ui:Label text="Enemies" class="team-label enemy-label" />
+                <ui:VisualElement name="enemy-fighters" class="fighters-container" />
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+        <!-- Battle Log -->
+        <ui:VisualElement class="panel battle-log-panel">
+            <ui:Label text="Battle Log" class="sub-header" />
+            <ui:ScrollView mode="Vertical" name="battle-log-scroll" class="battle-log-scroll">
+                <ui:VisualElement name="battle-log" class="battle-log" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+
+        <!-- Action Buttons -->
+        <ui:VisualElement class="battle-actions">
+            <ui:Button text="Skip to End" name="btn-skip" class="btn btn-secondary" />
+            <ui:Button text="Continue" name="btn-continue" class="btn btn-primary" style="display: none;" />
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

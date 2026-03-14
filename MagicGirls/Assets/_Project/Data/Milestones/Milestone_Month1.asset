@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1357bd924cb2fd64cb40ee93362bd382, type: 3}
+  m_Name: Milestone_Month1
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGirls.Data.MilestoneSO
+  milestoneName: First Steps
+  description: Prove your team's worth by defeating the Dark Queen and growing stronger.
+  conditions:
+  - conditionType: 0
+    targetBaseStat: 0
+    threshold: 0
+    minHPPercent: 50
+    targetActivity: 0
+    activityCount: 0
+  - conditionType: 1
+    targetBaseStat: 0
+    threshold: 15
+    minHPPercent: 50
+    targetActivity: 0
+    activityCount: 0
+  goldReward: 200
+  experienceReward: 150
+  rewardDescription: The girls grow in confidence!
+  moralePenalty: 5
+  penaltyDescription: The team feels discouraged...
+  targetMonth: 1

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fdb1fb354b0b0c4d8cfbaafc96bde0c, type: 3}
+  m_Name: LootTable_Dungeon
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGirls.Data.LootTableSO
+  tableName: Dungeon Loot
+  entries:
+  - item: {fileID: 11400000, guid: cfe92388b9a5dcd4a95d8bcd7396cc83, type: 2}
+    dropChance: 0.4
+    minQuantity: 1
+    maxQuantity: 2
+  - item: {fileID: 11400000, guid: 667f28e066c0b874d9655d39083d49bb, type: 2}
+    dropChance: 0.3
+    minQuantity: 1
+    maxQuantity: 1
+  - item: {fileID: 11400000, guid: 50eb564923e9da048862595c1adba663, type: 2}
+    dropChance: 0.1
+    minQuantity: 1
+    maxQuantity: 1
+  minGold: 5
+  maxGold: 20

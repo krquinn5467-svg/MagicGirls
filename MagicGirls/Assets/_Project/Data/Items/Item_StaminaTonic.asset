@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf78dbe0908b764793f572f45548a54, type: 3}
+  m_Name: Item_StaminaTonic
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGirls.Data.ItemDefinitionSO
+  itemName: Stamina Tonic
+  description: Restores stamina for another day of hard work.
+  itemType: 3
+  equipSlot: 0
+  statBonuses: []
+  hpBonus: 0
+  armorClassBonus: 0
+  attackBonus: 0
+  isConsumable: 1
+  healAmount: 0
+  staminaRestore: 5
+  buyPrice: 20
+  sellPrice: 10

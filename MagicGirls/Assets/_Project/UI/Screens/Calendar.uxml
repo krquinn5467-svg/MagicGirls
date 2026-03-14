@@ -1,0 +1,37 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Style src="../Theme/Theme.uss" />
+    <ui:Style src="Calendar.uss" />
+
+    <ui:VisualElement class="screen" name="calendar-screen">
+
+        <ui:VisualElement class="cal-header">
+            <ui:Button text="Back" name="btn-back" class="btn header-btn" />
+            <ui:Label name="month-label" text="Month 1" class="header-text" />
+        </ui:VisualElement>
+
+        <!-- Month Grid -->
+        <ui:VisualElement class="panel cal-month-panel">
+            <!-- Week headers -->
+            <ui:VisualElement class="cal-row cal-header-row">
+                <ui:Label text="" class="cal-week-label" />
+                <ui:Label text="Mon" class="cal-day-header" />
+                <ui:Label text="Tue" class="cal-day-header" />
+                <ui:Label text="Wed" class="cal-day-header" />
+                <ui:Label text="Thu" class="cal-day-header" />
+                <ui:Label text="Fri" class="cal-day-header" />
+                <ui:Label text="Sat" class="cal-day-header" />
+                <ui:Label text="Sun" class="cal-day-header" />
+            </ui:VisualElement>
+
+            <!-- 4 weeks of days (built dynamically) -->
+            <ui:VisualElement name="cal-grid" />
+        </ui:VisualElement>
+
+        <!-- Status Info -->
+        <ui:VisualElement class="panel cal-info-panel">
+            <ui:Label name="cal-status" text="" class="body-text" />
+            <ui:Label name="cal-milestone" text="" class="body-text" style="margin-top: 8px;" />
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

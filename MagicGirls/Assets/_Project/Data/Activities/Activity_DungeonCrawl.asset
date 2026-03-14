@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd7075ee4d73f84d9b520c9244462c0, type: 3}
+  m_Name: Activity_DungeonCrawl
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGirls.Data.ActivityDefinitionSO
+  activityType: 3
+  displayName: Dungeon Crawl
+  description: Explore dangerous dungeons at night. High risk, high reward!
+  icon: {fileID: 0}
+  nightOnly: 1
+  statModifiers:
+  - targetType: 1
+    baseStat: 0
+    magicalStat: 0
+    dieType: 6
+    diceCount: 1
+    flatModifier: 0
+  - targetType: 0
+    baseStat: 2
+    magicalStat: 0
+    dieType: 4
+    diceCount: 1
+    flatModifier: 0
+  - targetType: 0
+    baseStat: 0
+    magicalStat: 0
+    dieType: 4
+    diceCount: 1
+    flatModifier: 0
+  staminaCost: 3
+  moraleChange: -2
+  goldGain: 0
+  experienceGain: 25
+  injuryDC: 12

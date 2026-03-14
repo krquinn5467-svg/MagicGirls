@@ -1,0 +1,87 @@
+.cal-header {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.cal-header .header-text {
+    margin-left: 16px;
+    margin-bottom: 0;
+}
+
+.cal-month-panel {
+    margin-bottom: 16px;
+}
+
+.cal-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.cal-header-row {
+    margin-bottom: 8px;
+}
+
+.cal-week-label {
+    width: 80px;
+    font-size: 13px;
+    color: #a0a0b0;
+    -unity-font-style: bold;
+}
+
+.cal-day-header {
+    flex-grow: 1;
+    -unity-text-align: middle-center;
+    font-size: 13px;
+    color: #a0a0b0;
+    -unity-font-style: bold;
+}
+
+.cal-day {
+    flex-grow: 1;
+    height: 60px;
+    margin: 2px;
+    background-color: #1f2f50;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.1);
+    justify-content: center;
+    align-items: center;
+}
+
+.cal-day-label {
+    font-size: 16px;
+    color: #eaeaea;
+}
+
+.cal-day-current {
+    border-color: #FF69B4;
+    border-width: 2px;
+    background-color: rgba(255, 105, 180, 0.15);
+}
+
+.cal-day-past {
+    background-color: #0f1729;
+    opacity: 0.6;
+}
+
+.cal-day-battle {
+    border-color: #EF4444;
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.cal-day-battle-label {
+    font-size: 10px;
+    color: #EF4444;
+    -unity-font-style: bold;
+}
+
+.cal-day-milestone {
+    border-color: #FFD700;
+    background-color: rgba(255, 215, 0, 0.1);
+}
+
+.cal-info-panel {
+    padding: 16px;
+}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cacada68c4d0f74ab63884fdcca5976, type: 3}
+  m_Name: Encounter_Week2
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGirls.Data.MonsterEncounterSO
+  encounterName: Dark Imp Raid
+  description: A dark imp leads a slime into battle!
+  monsters:
+  - {fileID: 11400000, guid: e1735e60353fbb14991fc055e1a99cbd, type: 2}
+  - {fileID: 11400000, guid: 71e08663f9d520546b0168ee151d043b, type: 2}
+  minWeek: 2
+  maxWeek: 3
+  isBoss: 0
+  milestoneDescription: 

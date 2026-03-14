@@ -1,0 +1,264 @@
+.battle-header {
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.battle-header .header-text {
+    margin-bottom: 4px;
+}
+
+/* Arena Layout */
+.arena {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    min-height: 200px;
+}
+
+.team-side {
+    flex-grow: 1;
+    padding: 12px;
+}
+
+.team-label {
+    font-size: 16px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin-bottom: 8px;
+}
+
+.player-label {
+    color: #3B82F6;
+}
+
+.enemy-label {
+    color: #EF4444;
+}
+
+.vs-divider {
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.vs-text {
+    font-size: 28px;
+    color: #FFD700;
+    -unity-font-style: bold;
+}
+
+.fighters-container {
+    flex-direction: column;
+}
+
+/* Fighter Portrait */
+.fighter-card {
+    background-color: #1f2f50;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.fighter-card-defeated {
+    opacity: 0.4;
+    background-color: #0f1729;
+}
+
+.fighter-card-acting {
+    border-color: #FFD700;
+    border-width: 2px;
+}
+
+.fighter-name-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.fighter-name {
+    font-size: 15px;
+    -unity-font-style: bold;
+}
+
+.player-fighter-name {
+    color: #3B82F6;
+}
+
+.enemy-fighter-name {
+    color: #EF4444;
+}
+
+.fighter-hp-text {
+    font-size: 12px;
+    color: #a0a0b0;
+}
+
+.fighter-hp-bar {
+    height: 8px;
+    background-color: #0f1729;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.fighter-hp-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition-duration: 0.3s;
+}
+
+.hp-fill-player {
+    background-color: #22C55E;
+}
+
+.hp-fill-enemy {
+    background-color: #EF4444;
+}
+
+.hp-fill-low {
+    background-color: #F59E0B;
+}
+
+.hp-fill-critical {
+    background-color: #EF4444;
+}
+
+.fighter-stats-row {
+    flex-direction: row;
+    margin-top: 4px;
+}
+
+.fighter-stat {
+    font-size: 10px;
+    color: #a0a0b0;
+    margin-right: 8px;
+}
+
+/* Battle Log */
+.battle-log-panel {
+    flex-grow: 1;
+    min-height: 150px;
+    max-height: 250px;
+}
+
+.battle-log-scroll {
+    flex-grow: 1;
+}
+
+.battle-log {
+    padding: 4px;
+}
+
+.log-entry {
+    padding: 3px 6px;
+    margin-bottom: 2px;
+    border-radius: 3px;
+}
+
+.log-entry-round {
+    background-color: rgba(255, 215, 0, 0.1);
+    margin-top: 8px;
+}
+
+.log-entry-hit {
+    background-color: rgba(34, 197, 94, 0.08);
+}
+
+.log-entry-miss {
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.log-entry-crit {
+    background-color: rgba(255, 215, 0, 0.15);
+}
+
+.log-entry-defeat {
+    background-color: rgba(168, 85, 247, 0.1);
+}
+
+.log-text {
+    font-size: 13px;
+    color: #eaeaea;
+    white-space: normal;
+}
+
+.log-text-round {
+    color: #FFD700;
+    -unity-font-style: bold;
+}
+
+.log-text-crit {
+    color: #FFD700;
+    -unity-font-style: bold;
+}
+
+.log-text-defeat {
+    color: #A855F7;
+    -unity-font-style: bold;
+}
+
+/* Battle Actions */
+.battle-actions {
+    flex-direction: row;
+    justify-content: center;
+    padding: 12px;
+}
+
+.battle-actions .btn {
+    margin: 0 8px;
+    width: 160px;
+    height: 44px;
+}
+
+/* Battle Result Overlay */
+.battle-result-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.battle-result-panel {
+    background-color: #16213e;
+    border-radius: 12px;
+    padding: 32px;
+    border-width: 2px;
+    min-width: 400px;
+    align-items: center;
+}
+
+.result-victory {
+    border-color: #FFD700;
+}
+
+.result-defeat {
+    border-color: #EF4444;
+}
+
+.battle-result-title {
+    font-size: 36px;
+    -unity-font-style: bold;
+    margin-bottom: 16px;
+}
+
+.result-title-victory {
+    color: #FFD700;
+}
+
+.result-title-defeat {
+    color: #EF4444;
+}
+
+.battle-reward-text {
+    font-size: 18px;
+    color: #eaeaea;
+    margin-bottom: 8px;
+}

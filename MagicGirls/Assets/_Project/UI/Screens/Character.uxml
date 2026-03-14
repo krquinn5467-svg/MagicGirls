@@ -1,0 +1,55 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Style src="../Theme/Theme.uss" />
+    <ui:Style src="Character.uss" />
+
+    <ui:VisualElement class="screen" name="character-screen">
+
+        <ui:VisualElement class="char-header">
+            <ui:Button text="Back" name="btn-back" class="btn header-btn" />
+            <ui:Label text="Character Details" class="header-text" />
+        </ui:VisualElement>
+
+        <!-- Character Selector Tabs -->
+        <ui:VisualElement name="char-tabs" class="char-tabs" />
+
+        <!-- Character Detail Content -->
+        <ui:ScrollView mode="Vertical" class="char-scroll">
+            <ui:VisualElement class="char-content">
+
+                <!-- Identity Section -->
+                <ui:VisualElement class="panel char-identity">
+                    <ui:Label name="char-name" text="Character Name" class="char-detail-name" />
+                    <ui:Label name="char-level" text="Level 1" class="char-detail-level" />
+                    <ui:Label name="char-traits" text="Brave, Cheerful" class="character-traits" />
+                    <ui:Label name="char-backstory" text="" class="body-text char-backstory" />
+                </ui:VisualElement>
+
+                <!-- Vitals Section -->
+                <ui:VisualElement class="panel">
+                    <ui:Label text="Vitals" class="sub-header" />
+                    <ui:VisualElement name="vitals-container" />
+                </ui:VisualElement>
+
+                <!-- Base Stats Section -->
+                <ui:VisualElement class="panel">
+                    <ui:Label text="Base Stats (DnD)" class="sub-header" />
+                    <ui:VisualElement name="base-stats-container" />
+                </ui:VisualElement>
+
+                <!-- Magical Stats Section -->
+                <ui:VisualElement class="panel">
+                    <ui:Label text="Magical Stats" class="sub-header" />
+                    <ui:VisualElement name="magic-stats-container" />
+                </ui:VisualElement>
+
+                <!-- Experience Section -->
+                <ui:VisualElement class="panel">
+                    <ui:Label text="Experience" class="sub-header" />
+                    <ui:VisualElement name="xp-container" />
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+        </ui:ScrollView>
+
+    </ui:VisualElement>
+</ui:UXML>

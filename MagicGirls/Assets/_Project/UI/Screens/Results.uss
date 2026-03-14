@@ -1,0 +1,85 @@
+.results-panel {
+    min-width: 450px;
+    max-width: 550px;
+}
+
+.narrative {
+    margin-bottom: 16px;
+    font-size: 16px;
+    white-space: normal;
+}
+
+.results-section {
+    margin-bottom: 16px;
+}
+
+.dice-roll-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.dice-roll-label {
+    font-size: 14px;
+    color: #eaeaea;
+}
+
+.dice-roll-value {
+    font-size: 16px;
+    color: #FFD700;
+    -unity-font-style: bold;
+}
+
+.stat-change-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    margin-bottom: 2px;
+}
+
+.stat-change-label {
+    font-size: 14px;
+    color: #eaeaea;
+    width: 120px;
+}
+
+.stat-change-value {
+    font-size: 16px;
+    -unity-font-style: bold;
+}
+
+.other-change-row {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4px 8px;
+}
+
+.other-change-label {
+    font-size: 14px;
+    color: #a0a0b0;
+}
+
+.other-change-value {
+    font-size: 14px;
+    -unity-font-style: bold;
+}
+
+.injury-warning {
+    color: #EF4444;
+    font-size: 16px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin: 8px 0;
+}
+
+.continue-btn {
+    margin-top: 16px;
+    align-self: center;
+    width: 160px;
+    height: 40px;
+}

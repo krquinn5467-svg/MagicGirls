@@ -1,0 +1,32 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Style src="../Theme/Theme.uss" />
+    <ui:Style src="Results.uss" />
+
+    <ui:VisualElement class="overlay" name="results-overlay">
+        <ui:VisualElement class="overlay-panel results-panel">
+
+            <ui:Label text="Activity Results" name="results-title" class="header-text" />
+            <ui:Label text="" name="narrative-text" class="body-text narrative" />
+
+            <!-- Dice Rolls -->
+            <ui:VisualElement name="dice-section" class="results-section">
+                <ui:Label text="Dice Rolls" class="sub-header" />
+                <ui:VisualElement name="dice-rolls-container" />
+            </ui:VisualElement>
+
+            <!-- Stat Changes -->
+            <ui:VisualElement name="stats-section" class="results-section">
+                <ui:Label text="Stat Changes" class="sub-header" />
+                <ui:VisualElement name="stat-changes-container" />
+            </ui:VisualElement>
+
+            <!-- Other Changes -->
+            <ui:VisualElement name="other-section" class="results-section">
+                <ui:VisualElement name="other-changes-container" />
+            </ui:VisualElement>
+
+            <ui:Button text="Continue" name="btn-continue" class="btn btn-primary continue-btn" />
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

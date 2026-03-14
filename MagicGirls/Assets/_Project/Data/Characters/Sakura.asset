@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd72a04cf7f524b43b26254b8c7f73d4, type: 3}
+  m_Name: Sakura
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGirls.Data.CharacterTemplateSO
+  characterName: Sakura
+  backstory: A spirited girl who faces every challenge with a smile. Her bravery
+    is matched only by her kindness.
+  portrait: {fileID: 0}
+  battleSprite: {fileID: 0}
+  startingSTR: 14
+  startingDEX: 12
+  startingCON: 13
+  startingINT: 9
+  startingWIS: 10
+  startingCHA: 14
+  startingMagicPower: 11
+  startingMagicAffinity: 10
+  startingCorruption: 0
+  startingMorale: 18
+  startingHP: 24
+  startingStamina: 12
+  defaultTraits: 0000000006000000
