@@ -15,14 +15,12 @@ namespace MagicGirls.UI.Screens
         private UIManager _uiManager;
         private string _selectedCharacterId;
         private readonly Dictionary<string, VisualElement> _characterCards = new();
-        private readonly List<ScheduleSlotWidget> _scheduleSlots = new();
 
         // UI references
         private Label _timeLabel;
         private Label _goldLabel;
         private VisualElement _characterList;
-        private VisualElement _scheduleGrid;
-        private Button _btnExecuteDay;
+        private Button _btnScheduleDay;
         private Button _btnCharacters;
         private Button _btnCalendar;
 
@@ -41,7 +39,6 @@ namespace MagicGirls.UI.Screens
             CacheUIReferences();
             BindButtons();
             BindEvents();
-            BuildScheduleGrid();
         }
 
         private void CacheUIReferences()
@@ -49,15 +46,15 @@ namespace MagicGirls.UI.Screens
             _timeLabel = QL("time-label");
             _goldLabel = QL("gold-label");
             _characterList = Q("character-list");
-            _scheduleGrid = Q("schedule-grid");
-            _btnExecuteDay = QB("btn-execute-day");
+            _btnScheduleDay = QB("btn-schedule-day");
             _btnCharacters = QB("btn-characters");
             _btnCalendar = QB("btn-calendar");
         }
 
         private void BindButtons()
         {
-            _btnExecuteDay.clicked += OnExecuteDayClicked;
+            if (_btnScheduleDay != null)
+                _btnScheduleDay.clicked += () => _uiManager.ShowScreen("Scheduler");
 
             if (_btnCharacters != null)
                 _btnCharacters.clicked += () => _uiManager.ShowScreen("Character");
@@ -73,42 +70,9 @@ namespace MagicGirls.UI.Screens
             _gameManager.Team.OnCharacterUpdated += _ => RefreshCharacterCards();
         }
 
-        private void BuildScheduleGrid()
-        {
-            _scheduleGrid.Clear();
-            _scheduleSlots.Clear();
-
-            foreach (var character in _gameManager.Team.ActiveTeam)
-            {
-                var row = new VisualElement();
-                row.AddToClassList("schedule-row");
-
-                var nameLabel = new Label(character.Name);
-                nameLabel.AddToClassList("schedule-char-name");
-                row.Add(nameLabel);
-
-                for (int seg = 0; seg < GameCalendar.SegmentsPerDay; seg++)
-                {
-                    var available = _gameManager.Schedule.GetAvailableActivities(seg);
-                    var slot = new ScheduleSlotWidget(character.Id, seg, available);
-                    slot.OnActivityChanged += OnScheduleSlotChanged;
-                    _scheduleSlots.Add(slot);
-                    row.Add(slot);
-                }
-
-                _scheduleGrid.Add(row);
-            }
-        }
-
-        private void OnScheduleSlotChanged(string characterId, int segmentIndex, ActivityType activity)
-        {
-            _gameManager.Schedule.SetActivity(characterId, segmentIndex, activity);
-        }
-
         public override void OnShow()
         {
             RefreshAll();
-            BuildScheduleGrid();
         }
 
         public override void OnHide() { }
@@ -238,50 +202,6 @@ namespace MagicGirls.UI.Screens
 
             if (_characterCards.TryGetValue(characterId, out var newCard))
                 newCard.AddToClassList("character-card-selected");
-        }
-
-        private void OnExecuteDayClicked()
-        {
-            if (_gameManager.IsDayInProgress) return;
-
-            var results = _gameManager.ExecuteDay();
-            if (results == null || results.Count == 0) return;
-
-            // Show results one segment at a time
-            _pendingDayResults = results;
-            _dayResultIndex = 0;
-            ShowNextSegmentResult();
-        }
-
-        private void ShowNextSegmentResult()
-        {
-            if (_pendingDayResults == null || _dayResultIndex >= _pendingDayResults.Count)
-            {
-                // All results shown, refresh
-                _pendingDayResults = null;
-                RefreshAll();
-                BuildScheduleGrid();
-                return;
-            }
-
-            var segResult = _pendingDayResults[_dayResultIndex];
-            _dayResultIndex++;
-
-            var resultsScreen = _uiManager.GetScreen<DayResultsScreen>("DayResults");
-            if (resultsScreen != null)
-            {
-                resultsScreen.ShowSegmentResults(segResult, () =>
-                {
-                    _uiManager.HideOverlay(resultsScreen);
-                    ShowNextSegmentResult();
-                });
-                _uiManager.ShowOverlay(resultsScreen);
-            }
-            else
-            {
-                // Fallback: skip overlay if DayResults screen not registered
-                ShowNextSegmentResult();
-            }
         }
     }
 }

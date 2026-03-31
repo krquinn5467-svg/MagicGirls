@@ -12,7 +12,7 @@ namespace MagicGirls.UI.Screens
     {
         private Action _onContinue;
 
-        public DayResultsScreen() : base()
+        public DayResultsScreen(VisualTreeAsset template) : base(template)
         {
             BuildUI();
         }
@@ -22,41 +22,33 @@ namespace MagicGirls.UI.Screens
         private VisualElement _resultsContainer;
         private Button _btnContinue;
 
+        private UIManager _uiManager;
+
         private void BuildUI()
         {
             Root.AddToClassList("overlay");
-
-            _panel = new VisualElement();
-            _panel.AddToClassList("overlay-panel");
-            _panel.style.minWidth = 500;
-            _panel.style.maxWidth = 700;
-            _panel.style.maxHeight = 500;
-
-            _titleLabel = new Label("Segment Results");
-            _titleLabel.AddToClassList("header-text");
-            _panel.Add(_titleLabel);
-
-            var scrollView = new ScrollView(ScrollViewMode.Vertical);
-            scrollView.style.flexGrow = 1;
-            scrollView.style.maxHeight = 350;
-
-            _resultsContainer = new VisualElement();
-            scrollView.Add(_resultsContainer);
-            _panel.Add(scrollView);
-
-            _btnContinue = new Button();
-            _btnContinue.text = "Next";
-            _btnContinue.AddToClassList("btn");
-            _btnContinue.AddToClassList("btn-primary");
-            _btnContinue.style.alignSelf = Align.Center;
-            _btnContinue.style.width = 160;
-            _btnContinue.style.height = 40;
-            _btnContinue.style.marginTop = 16;
-            _btnContinue.clicked += () => _onContinue?.Invoke();
-            _panel.Add(_btnContinue);
-
-            Root.Add(_panel);
         }
+
+        public void Initialize(UIManager uiManager)
+        {
+            _uiManager = uiManager;
+
+            CacheUIReferences();
+            BindButtons();
+        }
+
+        private void CacheUIReferences()
+        {
+            _btnContinue = QB("btn-continue");
+            _resultsContainer = Q("results-container");
+            _titleLabel = QL("results-title");
+        }
+
+        private void BindButtons()
+        {
+            _btnContinue.clicked += () => _onContinue?.Invoke();
+        }
+
 
         public void ShowSegmentResults(SegmentResults segResults, Action onContinue)
         {

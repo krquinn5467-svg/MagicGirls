@@ -15,9 +15,11 @@ namespace MagicGirls.Runtime.Controllers
         [Header("UI Templates")]
         [SerializeField] private VisualTreeAsset hubTemplate;
         [SerializeField] private VisualTreeAsset resultsTemplate;
+        [SerializeField] private VisualTreeAsset dayResultsTemplate;
         [SerializeField] private VisualTreeAsset characterTemplate;
         [SerializeField] private VisualTreeAsset calendarTemplate;
         [SerializeField] private VisualTreeAsset battleTemplate;
+        [SerializeField] private VisualTreeAsset schedulerTemplate;
 
         private UIManager _uiManager;
         public GameManager _gameManager;
@@ -52,13 +54,18 @@ namespace MagicGirls.Runtime.Controllers
             hubScreen.Initialize(_gameManager, _uiManager);
             _uiManager.RegisterScreen("Hub", hubScreen);
 
+            var schedulerScreen = new SchedulerScreen(schedulerTemplate);
+            schedulerScreen.Initialize(_gameManager, _uiManager);
+            _uiManager.RegisterScreen("Scheduler", schedulerScreen);
+
             // Results overlay
             var resultsScreen = new ResultsScreen(resultsTemplate);
             resultsScreen.Initialize(_uiManager);
             _uiManager.RegisterScreen("Results", resultsScreen);
 
             // Day results overlay
-            var dayResultsScreen = new DayResultsScreen();
+            var dayResultsScreen = new DayResultsScreen(dayResultsTemplate);
+            dayResultsScreen.Initialize(_uiManager);
             _uiManager.RegisterScreen("DayResults", dayResultsScreen);
 
             // Character detail screen

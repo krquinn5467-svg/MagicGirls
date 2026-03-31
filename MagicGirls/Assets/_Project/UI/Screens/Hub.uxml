@@ -1,94 +1,33 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <ui:Style src="../Theme/Theme.uss" />
-    <ui:Style src="Hub.uss" />
-
-    <ui:VisualElement class="screen" name="hub-screen">
-
-        <!-- Header Bar -->
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Project/UI/Theme/Theme.uss?fileID=7433441132597879392&amp;guid=d6744d05c5b05ed4580c57a9155a6f2c&amp;type=3#Theme"/>
+    <Style src="project://database/Assets/_Project/UI/Screens/Hub.uss?fileID=7433441132597879392&amp;guid=e83bd68895cb0424d8d3cdc6fc6590d8&amp;type=3#Hub"/>
+    <ui:VisualElement name="hub-screen" class="screen" style="flex-shrink: 1; flex-grow: 1;">
         <ui:VisualElement class="hub-header">
             <ui:VisualElement class="header-title-row">
-                <ui:Label text="Magical Girl Academy" class="header-text" />
+                <ui:Label text="Magical Girl Academy" class="header-text"/>
                 <ui:VisualElement class="header-buttons">
-                    <ui:Button text="Characters" name="btn-characters" class="btn btn-secondary header-btn" />
-                    <ui:Button text="Calendar" name="btn-calendar" class="btn btn-secondary header-btn" />
+                    <ui:Button text="Characters" name="btn-characters" class="btn btn-secondary header-btn"/>
+                    <ui:Button text="Calendar" name="btn-calendar" class="btn btn-secondary header-btn"/>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="header-info-row">
-                <ui:Label name="time-label" text="Month 1, Week 1, Monday" class="body-text" />
-                <ui:Label name="gold-label" text="Gold: 100" class="gold-text" />
+                <ui:Label name="time-label" text="Month 1, Week 1, Monday" class="body-text"/>
+                <ui:Label name="gold-label" text="Gold: 100" class="gold-text"/>
             </ui:VisualElement>
         </ui:VisualElement>
-
-        <!-- Schedule Grid Section -->
-        <ui:VisualElement class="schedule-section panel">
-            <ui:Label text="Daily Schedule" class="sub-header" />
-            <ui:Label text="Click slots to cycle activities. Dungeon available at night only." class="dim-text" style="margin-bottom: 8px;" />
-
-            <!-- Column Headers -->
-            <ui:VisualElement name="schedule-header" class="schedule-header-row">
-                <ui:Label text="" class="schedule-name-col" />
-                <ui:Label text="AM 1" class="schedule-col-header time-segment-morning" />
-                <ui:Label text="AM 2" class="schedule-col-header time-segment-morning" />
-                <ui:Label text="PM 1" class="schedule-col-header time-segment-day" />
-                <ui:Label text="PM 2" class="schedule-col-header time-segment-day" />
-                <ui:Label text="EVE" class="schedule-col-header time-segment-night" />
-                <ui:Label text="NIGHT" class="schedule-col-header time-segment-night" />
-            </ui:VisualElement>
-
-            <!-- Character Schedule Rows (built dynamically) -->
-            <ui:VisualElement name="schedule-grid" />
-        </ui:VisualElement>
-
-        <!-- Main Content: Character Cards + Action Buttons -->
-        <ui:VisualElement class="hub-content">
-
-            <!-- Character Cards (left side) -->
-            <ui:VisualElement name="character-panel" class="panel character-panel-container">
-                <ui:Label text="Team Status" class="sub-header" />
-                <ui:VisualElement name="character-list" class="character-list" />
-            </ui:VisualElement>
-
-            <!-- Right side: Action + Status -->
-            <ui:VisualElement class="right-panel">
-
-                <!-- Activity Legend -->
-                <ui:VisualElement class="panel legend-panel">
-                    <ui:Label text="Activity Legend" class="sub-header" />
-                    <ui:VisualElement class="legend-grid">
-                        <ui:VisualElement class="legend-item">
-                            <ui:VisualElement class="legend-color slot-rest" />
-                            <ui:Label text="Rest - Recover stamina" class="dim-text" />
-                        </ui:VisualElement>
-                        <ui:VisualElement class="legend-item">
-                            <ui:VisualElement class="legend-color slot-train" />
-                            <ui:Label text="Train - STR/DEX/CON" class="dim-text" />
-                        </ui:VisualElement>
-                        <ui:VisualElement class="legend-item">
-                            <ui:VisualElement class="legend-color slot-school" />
-                            <ui:Label text="School - INT/WIS/Magic" class="dim-text" />
-                        </ui:VisualElement>
-                        <ui:VisualElement class="legend-item">
-                            <ui:VisualElement class="legend-color slot-dungeoncrawl" />
-                            <ui:Label text="Dungeon - XP/Loot (Night)" class="dim-text" />
-                        </ui:VisualElement>
-                        <ui:VisualElement class="legend-item">
-                            <ui:VisualElement class="legend-color slot-recreation" />
-                            <ui:Label text="Fun - Morale/CHA" class="dim-text" />
-                        </ui:VisualElement>
-                        <ui:VisualElement class="legend-item">
-                            <ui:VisualElement class="legend-color slot-work" />
-                            <ui:Label text="Work - Gold" class="dim-text" />
-                        </ui:VisualElement>
-                    </ui:VisualElement>
+        <ui:ScrollView horizontal-scroller-visibility="Hidden" style="flex-grow: 1;">
+            <ui:VisualElement class="hub-content" style="flex-shrink: 0; align-content: center; justify-content: space-evenly; align-self: center;">
+                <ui:VisualElement class="right-panel" style="flex-shrink: 0; flex-grow: 0;">
+                    <ui:Image style="width: 207px; height: 268px; background-color: rgb(121, 224, 189); background-image: url(&quot;project://database/Assets/_Project/Art/Characters/SteamMan_idle.png?fileID=3669090937425060167&amp;guid=daf57534c753644bda30940317cea841&amp;type=3#SteamMan_idle_0&quot;); -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0;"/>
                 </ui:VisualElement>
-
-                <!-- Execute Day Button -->
-                <ui:VisualElement class="advance-container">
-                    <ui:Button text="Execute Day" name="btn-execute-day" class="btn btn-primary execute-btn" />
+                <ui:VisualElement name="character-panel" class="panel character-panel-container">
+                    <ui:Label text="Team Status" class="sub-header"/>
+                    <ui:VisualElement name="character-list" class="character-list"/>
                 </ui:VisualElement>
-
             </ui:VisualElement>
-        </ui:VisualElement>
-
+            <ui:VisualElement name="VisualElement" class="advance-container" style="flex-shrink: 0; align-self: flex-end;">
+                <ui:Button text="Schedule Day" name="btn-schedule-day" class="btn btn-primary execute-btn"/>
+            </ui:VisualElement>
+        </ui:ScrollView>
     </ui:VisualElement>
 </ui:UXML>

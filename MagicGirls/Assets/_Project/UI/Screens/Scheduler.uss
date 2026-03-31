@@ -1,0 +1,241 @@
+.hub-header {
+    margin-bottom: 12px;
+}
+
+.header-title-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-buttons {
+    flex-direction: row;
+}
+
+.header-btn {
+    margin-left: 8px;
+    height: 32px;
+    font-size: 13px;
+    padding: 4px 12px;
+}
+
+.header-info-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+}
+
+/* Schedule Grid */
+.schedule-section {
+    margin-bottom: 16px;
+}
+
+.schedule-header-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.schedule-name-col {
+    width: 100px;
+    font-size: 13px;
+    color: #a0a0b0;
+    -unity-font-style: bold;
+}
+
+.schedule-col-header {
+    flex-grow: 1;
+    -unity-text-align: middle-center;
+    font-size: 12px;
+    color: #a0a0b0;
+    -unity-font-style: bold;
+    padding: 4px;
+    margin: 0 2px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.schedule-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.schedule-char-name {
+    width: 100px;
+    font-size: 14px;
+    color: #FF69B4;
+    -unity-font-style: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.schedule-slot {
+    flex-grow: 1;
+    margin: 0 2px;
+}
+
+.schedule-slot-btn {
+    height: 36px;
+    font-size: 11px;
+    -unity-font-style: bold;
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: #1f2f50;
+    color: #eaeaea;
+    cursor: link;
+    transition-duration: 0.1s;
+}
+
+.schedule-slot-btn:hover {
+    border-color: #FF69B4;
+}
+
+.schedule-slot-night {
+    background-color: rgba(155, 89, 182, 0.15);
+}
+
+/* Activity color coding */
+.slot-rest .schedule-slot-btn,
+.slot-rest {
+    background-color: #1a3a2a;
+    border-color: #22C55E;
+}
+
+.slot-train .schedule-slot-btn,
+.slot-train {
+    background-color: #3a1a1a;
+    border-color: #EF4444;
+}
+
+.slot-school .schedule-slot-btn,
+.slot-school {
+    background-color: #1a2a3a;
+    border-color: #3B82F6;
+}
+
+.slot-dungeoncrawl .schedule-slot-btn,
+.slot-dungeoncrawl {
+    background-color: #2a1a3a;
+    border-color: #A855F7;
+}
+
+.slot-recreation .schedule-slot-btn,
+.slot-recreation {
+    background-color: #3a3a1a;
+    border-color: #F59E0B;
+}
+
+.slot-work .schedule-slot-btn,
+.slot-work {
+    background-color: #3a2a1a;
+    border-color: #FFD700;
+}
+
+/* Hub content layout */
+.hub-content {
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+.character-panel-container {
+    width: 340px;
+    margin-right: 16px;
+    overflow: hidden;
+}
+
+.character-list {
+    flex-grow: 1;
+}
+
+.right-panel {
+    flex-grow: 1;
+}
+
+/* Character cards */
+.character-card {
+    margin-bottom: 8px;
+    padding: 12px;
+}
+
+.character-card-selected {
+    border-color: #FF69B4;
+    border-width: 2px;
+}
+
+.character-name {
+    font-size: 18px;
+    color: #FF69B4;
+    -unity-font-style: bold;
+    margin-bottom: 4px;
+}
+
+.character-level {
+    font-size: 12px;
+    color: #a0a0b0;
+    margin-bottom: 8px;
+}
+
+.character-traits {
+    font-size: 11px;
+    color: #A855F7;
+    margin-bottom: 6px;
+}
+
+.character-vitals-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.hp-text {
+    font-size: 12px;
+    color: #EF4444;
+}
+
+.stamina-text {
+    font-size: 12px;
+    color: #22C55E;
+}
+
+.morale-text {
+    font-size: 12px;
+    color: #3B82F6;
+}
+
+/* Legend */
+.legend-panel {
+    margin-bottom: 16px;
+}
+
+.legend-grid {
+    flex-direction: column;
+}
+
+.legend-item {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    margin-right: 8px;
+    border-width: 1px;
+}
+
+/* Advance/Execute */
+.advance-container {
+    margin-top: 16px;
+    align-items: center;
+}
+
+.execute-btn {
+    width: 240px;
+    height: 56px;
+    font-size: 22px;
+}

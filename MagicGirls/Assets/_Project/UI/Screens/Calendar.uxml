@@ -1,37 +1,29 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <ui:Style src="../Theme/Theme.uss" />
-    <ui:Style src="Calendar.uss" />
-
-    <ui:VisualElement class="screen" name="calendar-screen">
-
-        <ui:VisualElement class="cal-header">
-            <ui:Button text="Back" name="btn-back" class="btn header-btn" />
-            <ui:Label name="month-label" text="Month 1" class="header-text" />
-        </ui:VisualElement>
-
-        <!-- Month Grid -->
-        <ui:VisualElement class="panel cal-month-panel">
-            <!-- Week headers -->
-            <ui:VisualElement class="cal-row cal-header-row">
-                <ui:Label text="" class="cal-week-label" />
-                <ui:Label text="Mon" class="cal-day-header" />
-                <ui:Label text="Tue" class="cal-day-header" />
-                <ui:Label text="Wed" class="cal-day-header" />
-                <ui:Label text="Thu" class="cal-day-header" />
-                <ui:Label text="Fri" class="cal-day-header" />
-                <ui:Label text="Sat" class="cal-day-header" />
-                <ui:Label text="Sun" class="cal-day-header" />
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Project/UI/Theme/Theme.uss?fileID=7433441132597879392&amp;guid=d6744d05c5b05ed4580c57a9155a6f2c&amp;type=3#Theme"/>
+    <Style src="project://database/Assets/_Project/UI/Screens/Calendar.uss?fileID=7433441132597879392&amp;guid=a89b6a54701c29149a8c088a73cf60c1&amp;type=3#Calendar"/>
+    <ui:VisualElement name="calendar-screen" class="screen">
+        <ui:ScrollView style="height: 100%;">
+            <ui:VisualElement class="cal-header">
+                <ui:Button text="Back" name="btn-back" class="btn header-btn"/>
+                <ui:Label name="month-label" text="Month 1" class="header-text"/>
             </ui:VisualElement>
-
-            <!-- 4 weeks of days (built dynamically) -->
-            <ui:VisualElement name="cal-grid" />
-        </ui:VisualElement>
-
-        <!-- Status Info -->
-        <ui:VisualElement class="panel cal-info-panel">
-            <ui:Label name="cal-status" text="" class="body-text" />
-            <ui:Label name="cal-milestone" text="" class="body-text" style="margin-top: 8px;" />
-        </ui:VisualElement>
-
+            <ui:VisualElement class="panel cal-month-panel">
+                <ui:VisualElement class="cal-row cal-header-row">
+                    <ui:Label text="" class="cal-week-label"/>
+                    <ui:Label text="Mon" class="cal-day-header"/>
+                    <ui:Label text="Tue" class="cal-day-header"/>
+                    <ui:Label text="Wed" class="cal-day-header"/>
+                    <ui:Label text="Thu" class="cal-day-header"/>
+                    <ui:Label text="Fri" class="cal-day-header"/>
+                    <ui:Label text="Sat" class="cal-day-header"/>
+                    <ui:Label text="Sun" class="cal-day-header"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="cal-grid"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" class="panel cal-info-panel" style="flex-shrink: 0; flex-grow: 1;">
+                <ui:Label name="cal-status" text="" class="body-text"/>
+                <ui:Label name="cal-milestone" text="" class="body-text" style="margin-top: 8px;"/>
+            </ui:VisualElement>
+        </ui:ScrollView>
     </ui:VisualElement>
 </ui:UXML>

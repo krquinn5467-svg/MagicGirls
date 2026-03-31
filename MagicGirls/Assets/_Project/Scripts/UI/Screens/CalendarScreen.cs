@@ -58,6 +58,10 @@ namespace MagicGirls.UI.Screens
                 weekLabel.AddToClassList("cal-week-label");
                 row.Add(weekLabel);
 
+                var dayContainer = new VisualElement();
+                dayContainer.AddToClassList("cal-day-container");
+                row.Add(dayContainer);
+
                 for (int day = 1; day <= GameCalendar.DaysPerWeek; day++)
                 {
                     var dayCell = new VisualElement();
@@ -65,6 +69,7 @@ namespace MagicGirls.UI.Screens
 
                     int dayNumber = (week - 1) * GameCalendar.DaysPerWeek + day;
                     var dayLabel = new Label(dayNumber.ToString());
+                    dayLabel.AddToClassList("cal-day-date-label");
                     dayLabel.AddToClassList("cal-day-label");
                     dayCell.Add(dayLabel);
 
@@ -84,6 +89,7 @@ namespace MagicGirls.UI.Screens
                         dayCell.AddToClassList("cal-day-battle");
                         var battleTag = new Label("BATTLE");
                         battleTag.AddToClassList("cal-day-battle-label");
+                        battleTag.AddToClassList("cal-day-label");
                         dayCell.Add(battleTag);
                     }
 
@@ -91,13 +97,12 @@ namespace MagicGirls.UI.Screens
                     {
                         dayCell.AddToClassList("cal-day-milestone");
                         var msTag = new Label("BOSS");
-                        msTag.style.fontSize = 10;
-                        msTag.style.color = new Color(1f, 0.84f, 0f);
-                        msTag.style.unityFontStyleAndWeight = FontStyle.Bold;
+                        msTag.AddToClassList("cal-day-boss-label");
+                        msTag.AddToClassList("cal-day-label");
                         dayCell.Add(msTag);
                     }
 
-                    row.Add(dayCell);
+                    dayContainer.Add(dayCell);
                 }
 
                 _calGrid.Add(row);

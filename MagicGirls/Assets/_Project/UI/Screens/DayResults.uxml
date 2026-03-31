@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Project/UI/Theme/Theme.uss?fileID=7433441132597879392&amp;guid=d6744d05c5b05ed4580c57a9155a6f2c&amp;type=3#Theme"/>
+    <Style src="project://database/Assets/_Project/UI/Screens/Results.uss?fileID=7433441132597879392&amp;guid=cb16a8216ace21a459fa5500b21ab550&amp;type=3#Results"/>
+    <ui:VisualElement name="results-overlay" class="overlay">
+        <ui:VisualElement class="overlay-panel results-panel">
+            <ui:Label text="Segment Results" name="results-title" class="header-text"/>
+            <ui:Label text="" name="narrative-text" class="body-text narrative"/>
+            <ui:ScrollView>
+            <ui:VisualElement name="results-container" class="results-section">
+                <ui:VisualElement name="other-changes-container"/>
+            </ui:VisualElement>
+            </ui:ScrollView>
+            <ui:Button text="Continue" name="btn-continue" class="btn btn-primary continue-btn"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

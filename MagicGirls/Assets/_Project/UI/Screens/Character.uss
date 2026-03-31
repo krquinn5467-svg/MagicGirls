@@ -11,12 +11,15 @@
 
 .char-tabs {
     flex-direction: row;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
+    border-bottom-color: var(--color-primary);
+    border-bottom-width: 1px;
 }
 
 .char-tab {
     padding: 8px 20px;
     margin-right: 4px;
+    margin-bottom: 0px;
     background-color: #16213e;
     border-radius: 8px 8px 0 0;
     border-width: 1px;
