@@ -145,8 +145,8 @@ namespace MagicGirls.UI.Screens
             _uiManager.HideOverlay(this);
         }
 
-        public override void OnShow() { }
-        public override void OnHide() { }
+        public override void Show() { }
+        public override void Hide() { }
         public override void BindData() { }
     }
 }

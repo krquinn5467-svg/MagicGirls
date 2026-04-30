@@ -25,7 +25,7 @@ namespace MagicGirls.Runtime
         {
             if (_activeScreen != null)
             {
-                _activeScreen.OnHide();
+                _activeScreen.Hide();
                 _activeScreen.Root.style.display = DisplayStyle.None;
             }
 
@@ -33,7 +33,7 @@ namespace MagicGirls.Runtime
             {
                 _activeScreen = screen;
                 screen.Root.style.display = DisplayStyle.Flex;
-                screen.OnShow();
+                screen.Show();
             }
             else
             {
@@ -50,12 +50,12 @@ namespace MagicGirls.Runtime
         {
             overlay.Root.style.display = DisplayStyle.Flex;
             Root.Add(overlay.Root);
-            overlay.OnShow();
+            overlay.Show();
         }
 
         public void HideOverlay(BaseScreen overlay)
         {
-            overlay.OnHide();
+            overlay.Hide();
             overlay.Root.style.display = DisplayStyle.None;
             overlay.Root.RemoveFromHierarchy();
         }

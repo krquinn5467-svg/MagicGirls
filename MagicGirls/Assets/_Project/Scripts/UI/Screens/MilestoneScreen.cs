@@ -16,13 +16,14 @@ namespace MagicGirls.UI.Screens
         private VisualElement _rewardsContainer;
         private Button _btnDismiss;
 
-        public MilestoneScreen() : base()
+        public MilestoneScreen(VisualTreeAsset template) : base(template)
         {
             BuildUI();
         }
 
         private void BuildUI()
         {
+            //todo: this will have to be fixed to work with a template
             Root.AddToClassList("overlay");
 
             _panel = new VisualElement();
@@ -162,8 +163,8 @@ namespace MagicGirls.UI.Screens
             _rewardsContainer.Add(label);
         }
 
-        public override void OnShow() { }
-        public override void OnHide() { }
+        public override void Show() { }
+        public override void Hide() { }
         public override void BindData() { }
     }
 }

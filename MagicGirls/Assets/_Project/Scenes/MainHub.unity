@@ -181,7 +181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1281607958
 AudioListener:
   m_ObjectHideFlags: 0
@@ -337,6 +337,7 @@ MonoBehaviour:
   calendarTemplate: {fileID: 9197481963319205126, guid: bdfe621101abbaa42b9a6442ace9ec8e, type: 3}
   battleTemplate: {fileID: 9197481963319205126, guid: 3f47eadd8dec2c942a6cc4dd6c918017, type: 3}
   schedulerTemplate: {fileID: 9197481963319205126, guid: 60966724b3a0147c4b24b63724d3c1af, type: 3}
+  screenRegistryAsset: {fileID: 11400000, guid: 34902fbc5beba4b429d2bca42c1cc243, type: 2}
   _gameManager: {fileID: 1163928776}
 --- !u!114 &1560402983
 MonoBehaviour:

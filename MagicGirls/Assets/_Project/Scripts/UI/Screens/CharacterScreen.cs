@@ -52,7 +52,7 @@ namespace MagicGirls.UI.Screens
             _btnBack.clicked += () => _uiManager.ShowScreen("Hub");
         }
 
-        public override void OnShow()
+        public override void Show()
         {
             BuildTabs();
 
@@ -63,7 +63,7 @@ namespace MagicGirls.UI.Screens
             SelectCharacter(_selectedCharId);
         }
 
-        public override void OnHide() { }
+        public override void Hide() { }
         public override void BindData() { }
 
         private void BuildTabs()

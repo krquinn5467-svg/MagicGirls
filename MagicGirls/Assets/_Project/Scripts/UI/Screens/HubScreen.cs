@@ -70,12 +70,12 @@ namespace MagicGirls.UI.Screens
             _gameManager.Team.OnCharacterUpdated += _ => RefreshCharacterCards();
         }
 
-        public override void OnShow()
+        public override void Show()
         {
             RefreshAll();
         }
 
-        public override void OnHide() { }
+        public override void Hide() { }
 
         public override void BindData()
         {

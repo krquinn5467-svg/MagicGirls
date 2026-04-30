@@ -6,6 +6,9 @@ using MagicGirls.Core.Services;
 using MagicGirls.Data;
 using MagicGirls.Runtime;
 using MagicGirls.UI.Screens;
+using MagicGirls.Runtime.Screens;
+using System.Threading.Tasks;
+using Mono.Cecil.Cil;
 
 namespace MagicGirls.Runtime.Controllers
 {
@@ -20,10 +23,17 @@ namespace MagicGirls.Runtime.Controllers
         [SerializeField] private VisualTreeAsset calendarTemplate;
         [SerializeField] private VisualTreeAsset battleTemplate;
         [SerializeField] private VisualTreeAsset schedulerTemplate;
+        [SerializeField] private VisualTreeAsset modalTemplate;
+        [SerializeField] private ScreenRegistryAsset screenRegistryAsset;
 
-        private UIManager _uiManager;
+        private ScreenManager _screenManager;
+
+
+        private UIManager _uiManager;       //to be replaced by screenmanager
         public GameManager _gameManager;
         private BattleController _battleController;
+
+        
 
         private void Start()
         {
@@ -44,9 +54,16 @@ namespace MagicGirls.Runtime.Controllers
 
         private void SetupUI()
         {
-            _uiManager = gameObject.AddComponent<UIManager>();
 
             var uiDoc = GetComponent<UIDocument>();
+            var screenFactory = new ReferencedScreenFactory();
+            var screenRegistry = new ScreenRegistry(screenRegistryAsset);
+
+            //FIX: this code should be somewhere generic. it's not specific to the main hub scene.
+            _screenManager = new ScreenManager(screenRegistry, screenFactory, uiDoc.rootVisualElement);
+            
+            _uiManager = gameObject.AddComponent<UIManager>();
+
             SetUIDocumentOnManager(_uiManager, uiDoc);
 
             // Hub screen
@@ -93,9 +110,12 @@ namespace MagicGirls.Runtime.Controllers
                 _uiManager.RegisterScreen("Battle", battleScreen);
             }
 
+            if(modalTemplate != null)
+            {  
             // Milestone screen (programmatic, no template)
-            var milestoneScreen = new MilestoneScreen();
+            var milestoneScreen = new MilestoneScreen(modalTemplate);
             _uiManager.RegisterScreen("Milestone", milestoneScreen);
+            }
 
             _uiManager.ShowScreen("Hub");
         }
@@ -165,6 +185,22 @@ namespace MagicGirls.Runtime.Controllers
                 _gameManager.OnBattleTriggered -= OnBattleTriggered;
                 _gameManager.OnMilestoneEvaluated -= OnMilestoneEvaluated;
             }
+        }
+
+        private void OnGUI()
+        {
+            if (GUI.Button(new Rect(10, 10, 150, 50), "Screen Test"))
+            {
+                print("start screen test!" + _screenManager);
+                _ = ShowTestScreen();
+            }
+        }
+
+        private async Task ShowTestScreen()
+        {
+            print("ShowTestScreen start");
+            var screen = await _screenManager.ShowScreenAsync<CalendarScreen>();
+            print("ShowTestScreen end");
         }
     }
 }

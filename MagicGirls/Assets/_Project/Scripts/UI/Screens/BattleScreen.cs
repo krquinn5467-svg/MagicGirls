@@ -248,13 +248,13 @@ namespace MagicGirls.UI.Screens
             container.Add(tag);
         }
 
-        public override void OnShow()
+        public override void Show()
         {
             _battleTitle.text = "Monster Battle!";
             _battleTitle.style.color = new Color(1f, 0.41f, 0.71f);
         }
 
-        public override void OnHide() { }
+        public override void Hide() { }
         public override void BindData() { }
 
         private class FighterUI

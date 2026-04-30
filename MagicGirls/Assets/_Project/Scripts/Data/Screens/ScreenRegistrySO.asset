@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469294021129a4429b30f914f74fce80, type: 3}
+  m_Name: ScreenRegistrySO
+  m_EditorClassIdentifier: Assembly-CSharp::MagicGirls.Runtime.Screens.ScreenRegistryAsset
+  Screens:
+  - Id: battleScreen
+    IsOverlay: 0
+    VisualTreeAsset: {fileID: 9197481963319205126, guid: 3f47eadd8dec2c942a6cc4dd6c918017, type: 3}
+    ScreenType:
+      _assemblyQualifiedName: MagicGirls.UI.Screens.BattleScreen, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - Id: calendarScreen
+    IsOverlay: 0
+    VisualTreeAsset: {fileID: 9197481963319205126, guid: bdfe621101abbaa42b9a6442ace9ec8e, type: 3}
+    ScreenType:
+      _assemblyQualifiedName: MagicGirls.UI.Screens.CalendarScreen, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - Id: characterScreen
+    IsOverlay: 0
+    VisualTreeAsset: {fileID: 9197481963319205126, guid: cae634ce6cc87534ea10d2b8a5503b90, type: 3}
+    ScreenType:
+      _assemblyQualifiedName: MagicGirls.UI.Screens.CharacterScreen, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - Id: dayResultsScreen
+    IsOverlay: 1
+    VisualTreeAsset: {fileID: 9197481963319205126, guid: 1c0b62d96fbb3480f9d8d80df161e227, type: 3}
+    ScreenType:
+      _assemblyQualifiedName: MagicGirls.UI.Screens.DayResultsScreen, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - Id: hubScreen
+    IsOverlay: 0
+    VisualTreeAsset: {fileID: 9197481963319205126, guid: 2786a512299eeec49a4bd3dfa6fb9178, type: 3}
+    ScreenType:
+      _assemblyQualifiedName: MagicGirls.UI.Screens.HubScreen, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  - Id: resultsScreen
+    IsOverlay: 0
+    VisualTreeAsset: {fileID: 9197481963319205126, guid: 5b0561c3f449b71499077dc28708158e, type: 3}
+    ScreenType:
+      _assemblyQualifiedName: MagicGirls.UI.Screens.ResultsScreen, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - Id: schedulerScreen
+    IsOverlay: 0
+    VisualTreeAsset: {fileID: 9197481963319205126, guid: 60966724b3a0147c4b24b63724d3c1af, type: 3}
+    ScreenType:
+      _assemblyQualifiedName: MagicGirls.UI.Screens.SchedulerScreen, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - Id: milestoneScreen
+    IsOverlay: 1
+    VisualTreeAsset: {fileID: 9197481963319205126, guid: e747229f3ac554b86b4bb9c844c39948, type: 3}
+    ScreenType:
+      _assemblyQualifiedName: MagicGirls.UI.Screens.MilestoneScreen, Assembly-CSharp,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null

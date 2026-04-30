@@ -173,8 +173,8 @@ namespace MagicGirls.UI.Screens
             };
         }
 
-        public override void OnShow() { }
-        public override void OnHide() { }
+        public override void Show() { }
+        public override void Hide() { }
         public override void BindData() { }
     }
 }

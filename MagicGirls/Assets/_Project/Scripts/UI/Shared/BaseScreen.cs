@@ -1,25 +1,26 @@
 using UnityEngine.UIElements;
+using MagicGirls.Runtime.Screens;
 
 namespace MagicGirls.UI
 {
-    public abstract class BaseScreen
+    public abstract class BaseScreen: IScreen
     {
         public VisualElement Root { get; protected set; }
 
-        protected BaseScreen()
+        public BaseScreen()
         {
             Root = new VisualElement();
             Root.style.flexGrow = 1;
         }
-
-        protected BaseScreen(VisualTreeAsset template)
+  
+        public BaseScreen(VisualTreeAsset template)
         {
-            Root = template.CloneTree();
+            Root = template.Instantiate();
             Root.style.flexGrow = 1;
         }
 
-        public abstract void OnShow();
-        public abstract void OnHide();
+        public abstract void Show();
+        public abstract void Hide();
         public abstract void BindData();
 
         protected VisualElement Q(string name) => Root.Q(name);

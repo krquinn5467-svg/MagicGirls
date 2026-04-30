@@ -105,13 +105,13 @@ namespace MagicGirls.UI.Screens
             _gameManager.Schedule.SetActivity(characterId, segmentIndex, activity);
         }
 
-        public override void OnShow()
+        public override void Show()
         {
             RefreshAll();
             BuildScheduleGrid();
         }
 
-        public override void OnHide() { }
+        public override void Hide() { }
 
         public override void BindData()
         {

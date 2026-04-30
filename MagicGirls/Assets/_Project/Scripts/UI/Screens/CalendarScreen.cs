@@ -18,6 +18,7 @@ namespace MagicGirls.UI.Screens
 
         public CalendarScreen(VisualTreeAsset template) : base(template)
         {
+            Debug.Log("Creating Calendar");
         }
 
         public void Initialize(GameManager gameManager, UIManager uiManager)
@@ -34,12 +35,12 @@ namespace MagicGirls.UI.Screens
             _btnBack.clicked += () => _uiManager.ShowScreen("Hub");
         }
 
-        public override void OnShow()
+        public override void Show()
         {
             BuildCalendar();
         }
 
-        public override void OnHide() { }
+        public override void Hide() { }
         public override void BindData() { }
 
         private void BuildCalendar()

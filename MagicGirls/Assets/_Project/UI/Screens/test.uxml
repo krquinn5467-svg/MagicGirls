@@ -1,9 +1,0 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/_Project/UI/Theme/Theme.uss?fileID=7433441132597879392&amp;guid=d6744d05c5b05ed4580c57a9155a6f2c&amp;type=3"/>
-    <ui:ScrollView>
-        <ui:VisualElement name="VisualElement" style="flex-grow: 1; height: 200px; width: 100%;"/>
-        <ui:VisualElement name="VisualElement" style="flex-grow: 1; height: 200px; width: 100%;"/>
-        <ui:VisualElement name="VisualElement" style="flex-grow: 1; height: 200px; width: 100%;"/>
-        <ui:VisualElement name="VisualElement" style="flex-grow: 1; height: 200px; width: 100%;"/>
-    </ui:ScrollView>
-</ui:UXML>
