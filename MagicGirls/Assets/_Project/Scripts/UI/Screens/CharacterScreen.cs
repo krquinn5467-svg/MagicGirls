@@ -7,13 +7,14 @@ using MagicGirls.Core.Models;
 using MagicGirls.Core.Services;
 using MagicGirls.Runtime;
 using MagicGirls.UI.Widgets;
+using MagicGirls.Runtime.Managers;
 
 namespace MagicGirls.UI.Screens
 {
-    public class CharacterScreen : BaseScreen
+    public class CharacterScreen : BaseScreen, IUsesGameManager, IUsesScreenManager
     {
         private GameManager _gameManager;
-        private UIManager _uiManager;
+        private ScreenManager _screenManager;
         private string _selectedCharId;
 
         private VisualElement _charTabs;
@@ -33,11 +34,8 @@ namespace MagicGirls.UI.Screens
         {
         }
 
-        public void Initialize(GameManager gameManager, UIManager uiManager)
+        public override void Initialize()
         {
-            _gameManager = gameManager;
-            _uiManager = uiManager;
-
             _charTabs = Q("char-tabs");
             _charName = QL("char-name");
             _charLevel = QL("char-level");
@@ -49,7 +47,17 @@ namespace MagicGirls.UI.Screens
             _xpContainer = Q("xp-container");
             _btnBack = QB("btn-back");
 
-            _btnBack.clicked += () => _uiManager.ShowScreen("Hub");
+            _btnBack.clicked += () => _ = _screenManager?.ShowScreenAsync<HubScreen>();
+        }
+
+        public void SetGameManager(GameManager gm)
+        {
+            _gameManager = gm;
+        }
+
+        public void SetScreenManager(ScreenManager sm)
+        {
+            _screenManager = sm;
         }
 
         public override void Show()

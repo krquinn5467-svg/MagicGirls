@@ -5,10 +5,11 @@ using MagicGirls.Core.Enums;
 using MagicGirls.Core.Models;
 using MagicGirls.Core.Systems;
 using MagicGirls.Runtime;
+using MagicGirls.Runtime.Managers;
 
 namespace MagicGirls.UI.Screens
 {
-    public class DayResultsScreen : BaseScreen
+    public class DayResultsScreen : BaseScreen, IUsesScreenManager
     {
         private Action _onContinue;
 
@@ -22,19 +23,22 @@ namespace MagicGirls.UI.Screens
         private VisualElement _resultsContainer;
         private Button _btnContinue;
 
-        private UIManager _uiManager;
+        private ScreenManager _screenManager;
 
         private void BuildUI()
         {
             Root.AddToClassList("overlay");
         }
 
-        public void Initialize(UIManager uiManager)
+        public override void Initialize()
         {
-            _uiManager = uiManager;
-
             CacheUIReferences();
             BindButtons();
+        }
+
+        public void SetScreenManager(ScreenManager sm)
+        {
+            _screenManager = sm;
         }
 
         private void CacheUIReferences()

@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using MagicGirls.UI;
+using System;
 
 namespace MagicGirls.Runtime
 {
+    [ObsoleteAttribute("UIManager is obsolete. Use ScreenManager instead.", true)]
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private UIDocument uiDocument;

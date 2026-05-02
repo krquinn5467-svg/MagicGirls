@@ -6,6 +6,7 @@ namespace MagicGirls.UI
     public abstract class BaseScreen: IScreen
     {
         public VisualElement Root { get; protected set; }
+        private bool IsInitialized;
 
         public BaseScreen()
         {
@@ -21,6 +22,7 @@ namespace MagicGirls.UI
 
         public abstract void Show();
         public abstract void Hide();
+        public abstract void Initialize();
         public abstract void BindData();
 
         protected VisualElement Q(string name) => Root.Q(name);

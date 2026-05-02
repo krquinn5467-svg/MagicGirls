@@ -6,13 +6,15 @@ using MagicGirls.Core.Enums;
 using MagicGirls.Core.Models;
 using MagicGirls.Runtime;
 using MagicGirls.UI.Widgets;
+using MagicGirls.Runtime.Managers;
+using System.Threading.Tasks;
 
 namespace MagicGirls.UI.Screens
 {
-    public class SchedulerScreen : BaseScreen
+    public class SchedulerScreen : BaseScreen, IUsesGameManager, IUsesScreenManager
     {
         private GameManager _gameManager;
-        private UIManager _uiManager;
+        private ScreenManager _screenManager;
         private string _selectedCharacterId;
         private readonly Dictionary<string, VisualElement> _characterCards = new();
         private readonly List<ScheduleSlotWidget> _scheduleSlots = new();
@@ -33,15 +35,22 @@ namespace MagicGirls.UI.Screens
         {
         }
 
-        public void Initialize(GameManager gameManager, UIManager uiManager)
+        public override void Initialize()
         {
-            _gameManager = gameManager;
-            _uiManager = uiManager;
-
             CacheUIReferences();
             BindButtons();
             BindEvents();
             BuildScheduleGrid();
+        }
+
+        public void SetGameManager(GameManager gm)
+        {
+            _gameManager = gm;
+        }
+
+        public void SetScreenManager(ScreenManager sm)
+        {
+            _screenManager = sm;
         }
 
         private void CacheUIReferences()
@@ -60,10 +69,10 @@ namespace MagicGirls.UI.Screens
             _btnExecuteDay.clicked += OnExecuteDayClicked;
 
             if (_btnCalendar != null)
-                _btnCalendar.clicked += () => _uiManager.ShowScreen("Calendar");
+                _btnCalendar.clicked += () => _ = _screenManager.ShowScreenAsync<CalendarScreen>();
 
             if(_backBtn != null)
-                _backBtn.clicked += () => _uiManager.ShowScreen("Hub");
+                _backBtn.clicked += () => _ = _screenManager.ShowScreenAsync<HubScreen>();
         }
 
         private void BindEvents()
@@ -250,10 +259,10 @@ namespace MagicGirls.UI.Screens
             // Show results one segment at a time
             _pendingDayResults = results;
             _dayResultIndex = 0;
-            ShowNextSegmentResult();
+            _ = ShowNextSegmentResult();
         }
 
-        private void ShowNextSegmentResult()
+        private async Task ShowNextSegmentResult()
         {
             if (_pendingDayResults == null || _dayResultIndex >= _pendingDayResults.Count)
             {
@@ -267,20 +276,20 @@ namespace MagicGirls.UI.Screens
             var segResult = _pendingDayResults[_dayResultIndex];
             _dayResultIndex++;
 
-            var resultsScreen = _uiManager.GetScreen<DayResultsScreen>("DayResults");
+            var resultsScreen = await _screenManager.GetScreen<DayResultsScreen>() as DayResultsScreen;
             if (resultsScreen != null)
             {
-                resultsScreen.ShowSegmentResults(segResult, () =>
+                resultsScreen.ShowSegmentResults(segResult, async () =>
                 {
-                    _uiManager.HideOverlay(resultsScreen);
-                    ShowNextSegmentResult();
+                    _screenManager.HideOverlay(resultsScreen);
+                    await ShowNextSegmentResult();
                 });
-                _uiManager.ShowOverlay(resultsScreen);
+                _screenManager.ShowOverlay(resultsScreen);
             }
             else
             {
                 // Fallback: skip overlay if DayResults screen not registered
-                ShowNextSegmentResult();
+                await ShowNextSegmentResult();
             }
         }
     }

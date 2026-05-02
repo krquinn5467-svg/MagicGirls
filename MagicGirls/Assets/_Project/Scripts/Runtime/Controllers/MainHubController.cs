@@ -27,13 +27,8 @@ namespace MagicGirls.Runtime.Controllers
         [SerializeField] private ScreenRegistryAsset screenRegistryAsset;
 
         private ScreenManager _screenManager;
-
-
-        private UIManager _uiManager;       //to be replaced by screenmanager
         public GameManager _gameManager;
         private BattleController _battleController;
-
-        
 
         private void Start()
         {
@@ -55,69 +50,23 @@ namespace MagicGirls.Runtime.Controllers
         private void SetupUI()
         {
 
+            //FIX: this code should be somewhere generic. it's not specific to the main hub scene.
             var uiDoc = GetComponent<UIDocument>();
-            var screenFactory = new ReferencedScreenFactory();
+
+            _screenManager = new ScreenManager(uiDoc.rootVisualElement);
             var screenRegistry = new ScreenRegistry(screenRegistryAsset);
 
-            //FIX: this code should be somewhere generic. it's not specific to the main hub scene.
-            _screenManager = new ScreenManager(screenRegistry, screenFactory, uiDoc.rootVisualElement);
+            var screenFactory = new ReferencedScreenFactory
+            (
+                _screenManager,
+                _gameManager,
+                _battleController
+            );
             
-            _uiManager = gameObject.AddComponent<UIManager>();
+            _screenManager.Factory = screenFactory;
+            _screenManager.Registry = screenRegistry;
 
-            SetUIDocumentOnManager(_uiManager, uiDoc);
-
-            // Hub screen
-            var hubScreen = new HubScreen(hubTemplate);
-            hubScreen.Initialize(_gameManager, _uiManager);
-            _uiManager.RegisterScreen("Hub", hubScreen);
-
-            var schedulerScreen = new SchedulerScreen(schedulerTemplate);
-            schedulerScreen.Initialize(_gameManager, _uiManager);
-            _uiManager.RegisterScreen("Scheduler", schedulerScreen);
-
-            // Results overlay
-            var resultsScreen = new ResultsScreen(resultsTemplate);
-            resultsScreen.Initialize(_uiManager);
-            _uiManager.RegisterScreen("Results", resultsScreen);
-
-            // Day results overlay
-            var dayResultsScreen = new DayResultsScreen(dayResultsTemplate);
-            dayResultsScreen.Initialize(_uiManager);
-            _uiManager.RegisterScreen("DayResults", dayResultsScreen);
-
-            // Character detail screen
-            if (characterTemplate != null)
-            {
-                var characterScreen = new CharacterScreen(characterTemplate);
-                characterScreen.Initialize(_gameManager, _uiManager);
-                _uiManager.RegisterScreen("Character", characterScreen);
-            }
-
-            // Calendar screen
-            if (calendarTemplate != null)
-            {
-                var calendarScreen = new CalendarScreen(calendarTemplate);
-                calendarScreen.Initialize(_gameManager, _uiManager);
-                _uiManager.RegisterScreen("Calendar", calendarScreen);
-            }
-
-            // Battle screen
-            if (battleTemplate != null)
-            {
-                var battleScreen = new BattleScreen(battleTemplate);
-                battleScreen.Initialize(_gameManager, _uiManager, _battleController);
-                battleScreen.SetDismissCallback(OnBattleDismissed);
-                _uiManager.RegisterScreen("Battle", battleScreen);
-            }
-
-            if(modalTemplate != null)
-            {  
-            // Milestone screen (programmatic, no template)
-            var milestoneScreen = new MilestoneScreen(modalTemplate);
-            _uiManager.RegisterScreen("Milestone", milestoneScreen);
-            }
-
-            _uiManager.ShowScreen("Hub");
+            _ = _screenManager.ShowScreenAsync<HubScreen>();
         }
 
         private void BindEvents()
@@ -126,12 +75,12 @@ namespace MagicGirls.Runtime.Controllers
             _gameManager.OnMilestoneEvaluated += OnMilestoneEvaluated;
         }
 
-        private void OnBattleTriggered(MonsterEncounterSO encounter)
+        private async void OnBattleTriggered(MonsterEncounterSO encounter)
         {
             Debug.Log($"[MainHub] Battle triggered: {encounter.encounterName}");
 
             // Switch to battle screen
-            _uiManager.ShowScreen("Battle");
+            var screen = await _screenManager.ShowScreenAsync<BattleScreen>();
 
             // Start the battle
             float difficulty = _gameManager.GetDifficultyScale();
@@ -149,33 +98,25 @@ namespace MagicGirls.Runtime.Controllers
             }
 
             // Return to hub
-            _uiManager.ShowScreen("Hub");
+            _ = _screenManager.ShowScreenAsync<HubScreen>();
         }
 
-        private void OnMilestoneEvaluated(MilestoneResult result)
+        private async void OnMilestoneEvaluated(MilestoneResult result)
         {
             Debug.Log($"[MainHub] Milestone evaluated: {result.Milestone.milestoneName} - {(result.Success ? "SUCCESS" : "FAILED")}");
 
-            var milestoneScreen = _uiManager.GetScreen<MilestoneScreen>("Milestone");
+            var milestoneScreen = await _screenManager.GetScreen<MilestoneScreen>() as MilestoneScreen;
             if (milestoneScreen != null)
             {
                 milestoneScreen.ShowResult(result, OnMilestoneDismissed);
-                _uiManager.ShowOverlay("Milestone");
+                _screenManager.ShowOverlay(milestoneScreen);
             }
         }
 
         private void OnMilestoneDismissed()
         {
             _gameManager.DismissMilestone();
-            _uiManager.HideOverlay("Milestone");
-        }
-
-        private void SetUIDocumentOnManager(UIManager manager, UIDocument doc)
-        {
-            var field = typeof(UIManager).GetField("uiDocument",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            if (field != null)
-                field.SetValue(manager, doc);
+            _screenManager.HideOverlay<MilestoneScreen>();
         }
 
         private void OnDestroy()

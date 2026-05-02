@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using MagicGirls.Core.Models;
 using MagicGirls.Runtime;
+using MagicGirls.Runtime.Managers;
 
 namespace MagicGirls.UI.Screens
 {
-    public class CalendarScreen : BaseScreen
+    public class CalendarScreen : BaseScreen, IUsesGameManager, IUsesScreenManager
     {
         private GameManager _gameManager;
-        private UIManager _uiManager;
+        private ScreenManager _screenManager;
 
         private Label _monthLabel;
         private VisualElement _calGrid;
@@ -21,18 +22,25 @@ namespace MagicGirls.UI.Screens
             Debug.Log("Creating Calendar");
         }
 
-        public void Initialize(GameManager gameManager, UIManager uiManager)
+        public override void Initialize()
         {
-            _gameManager = gameManager;
-            _uiManager = uiManager;
-
             _monthLabel = QL("month-label");
             _calGrid = Q("cal-grid");
             _calStatus = QL("cal-status");
             _calMilestone = QL("cal-milestone");
             _btnBack = QB("btn-back");
 
-            _btnBack.clicked += () => _uiManager.ShowScreen("Hub");
+            _btnBack.clicked += () => _ = _screenManager.ShowScreenAsync<HubScreen>();
+        }
+
+        public void SetGameManager(GameManager gm)
+        {
+            _gameManager = gm;
+        }
+
+        public void SetScreenManager(ScreenManager sm)
+        {
+            _screenManager = sm;
         }
 
         public override void Show()

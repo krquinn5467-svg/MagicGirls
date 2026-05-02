@@ -7,5 +7,6 @@ namespace MagicGirls.Runtime.Screens
         VisualElement Root { get; }
         void Show();
         void Hide();
+        void Initialize();
     }
 }

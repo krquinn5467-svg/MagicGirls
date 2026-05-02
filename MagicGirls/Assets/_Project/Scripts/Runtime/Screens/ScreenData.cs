@@ -11,6 +11,7 @@ namespace MagicGirls.Runtime.Screens
     {
         public string Id;
         public bool IsOverlay;
+        public bool PreserveScreenOnHide;
         public VisualTreeAsset VisualTreeAsset;
         public SerializableType ScreenType;
 

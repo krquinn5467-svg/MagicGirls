@@ -165,6 +165,7 @@ namespace MagicGirls.UI.Screens
 
         public override void Show() { }
         public override void Hide() { }
+        public override void Initialize() { }
         public override void BindData() { }
     }
 }

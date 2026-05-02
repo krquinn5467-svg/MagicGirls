@@ -7,13 +7,15 @@ using MagicGirls.Core.Enums;
 using MagicGirls.Core.Models;
 using MagicGirls.Runtime;
 using MagicGirls.Runtime.Controllers;
+using MagicGirls.Runtime.Managers;
 
 namespace MagicGirls.UI.Screens
 {
-    public class BattleScreen : BaseScreen
+    public class BattleScreen : BaseScreen, IUsesGameManager, IUsesScreenManager, IUsesBattleController
     {
         private GameManager _gameManager;
-        private UIManager _uiManager;
+        private ScreenManager _screenManager;
+
         private BattleController _battleController;
 
         private Label _battleTitle;
@@ -33,12 +35,8 @@ namespace MagicGirls.UI.Screens
         {
         }
 
-        public void Initialize(GameManager gameManager, UIManager uiManager, BattleController battleController)
+        public override void Initialize()
         {
-            _gameManager = gameManager;
-            _uiManager = uiManager;
-            _battleController = battleController;
-
             _battleTitle = QL("battle-title");
             _roundLabel = QL("round-label");
             _playerFighters = Q("player-fighters");
@@ -50,6 +48,21 @@ namespace MagicGirls.UI.Screens
 
             _btnSkip.clicked += OnSkipClicked;
             _btnContinue.clicked += OnContinueClicked;
+        }
+
+        public void SetGameManager(GameManager gm)
+        {
+            _gameManager = gm;
+        }
+
+        public void SetScreenManager(ScreenManager sm)
+        {
+            _screenManager = sm;
+        }
+
+        public void SetBattleController(BattleController bc)
+        {
+            _battleController = bc;
 
             // Bind battle events
             _battleController.OnBattleStarted += OnBattleStarted;
@@ -165,7 +178,14 @@ namespace MagicGirls.UI.Screens
 
         private void OnContinueClicked()
         {
-            _onBattleDismissed?.Invoke();
+            // _onBattleDismissed?.Invoke();
+            var battleState = _battleController.CurrentBattle;
+            if (battleState != null)
+            {
+                _gameManager.ApplyBattleResults(battleState);
+            }
+
+            _ = _screenManager.ShowScreenAsync<HubScreen>();
         }
 
         private void AddLogEntry(string text, string entryClass, string textClass)

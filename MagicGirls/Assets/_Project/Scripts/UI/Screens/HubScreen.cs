@@ -6,13 +6,14 @@ using MagicGirls.Core.Enums;
 using MagicGirls.Core.Models;
 using MagicGirls.Runtime;
 using MagicGirls.UI.Widgets;
+using MagicGirls.Runtime.Managers;
 
 namespace MagicGirls.UI.Screens
 {
-    public class HubScreen : BaseScreen
+    public class HubScreen : BaseScreen, IUsesGameManager, IUsesScreenManager
     {
         private GameManager _gameManager;
-        private UIManager _uiManager;
+        private ScreenManager _screenManager;
         private string _selectedCharacterId;
         private readonly Dictionary<string, VisualElement> _characterCards = new();
 
@@ -31,14 +32,21 @@ namespace MagicGirls.UI.Screens
         {
         }
 
-        public void Initialize(GameManager gameManager, UIManager uiManager)
+        public override void Initialize()
         {
-            _gameManager = gameManager;
-            _uiManager = uiManager;
-
             CacheUIReferences();
             BindButtons();
             BindEvents();
+        }
+
+        public void SetGameManager(GameManager gm)
+        {
+            _gameManager = gm;
+        }
+
+        public void SetScreenManager(ScreenManager sm)
+        {
+            _screenManager = sm;
         }
 
         private void CacheUIReferences()
@@ -54,13 +62,13 @@ namespace MagicGirls.UI.Screens
         private void BindButtons()
         {
             if (_btnScheduleDay != null)
-                _btnScheduleDay.clicked += () => _uiManager.ShowScreen("Scheduler");
+                _btnScheduleDay.clicked += () => _ = _screenManager.ShowScreenAsync<SchedulerScreen>();
 
             if (_btnCharacters != null)
-                _btnCharacters.clicked += () => _uiManager.ShowScreen("Character");
+                _btnCharacters.clicked += () => _ = _screenManager.ShowScreenAsync<CharacterScreen>();
 
             if (_btnCalendar != null)
-                _btnCalendar.clicked += () => _uiManager.ShowScreen("Calendar");
+                _btnCalendar.clicked += () => _ = _screenManager.ShowScreenAsync<CalendarScreen>();
         }
 
         private void BindEvents()

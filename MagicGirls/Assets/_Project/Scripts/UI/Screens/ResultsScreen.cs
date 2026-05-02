@@ -2,12 +2,14 @@ using UnityEngine.UIElements;
 using MagicGirls.Core.Enums;
 using MagicGirls.Core.Models;
 using MagicGirls.Runtime;
+using Unity.Android.Gradle.Manifest;
+using MagicGirls.Runtime.Managers;
 
 namespace MagicGirls.UI.Screens
 {
-    public class ResultsScreen : BaseScreen
+    public class ResultsScreen : BaseScreen, IUsesScreenManager
     {
-        private UIManager _uiManager;
+        private ScreenManager _screenManager;
 
         private Label _titleLabel;
         private Label _narrativeLabel;
@@ -20,10 +22,8 @@ namespace MagicGirls.UI.Screens
         {
         }
 
-        public void Initialize(UIManager uiManager)
+        public override void Initialize()
         {
-            _uiManager = uiManager;
-
             _titleLabel = QL("results-title");
             _narrativeLabel = QL("narrative-text");
             _diceContainer = Q("dice-rolls-container");
@@ -32,6 +32,11 @@ namespace MagicGirls.UI.Screens
             _btnContinue = QB("btn-continue");
 
             _btnContinue.clicked += OnContinueClicked;
+        }
+
+        public void SetScreenManager(ScreenManager sm)
+        {
+            _screenManager = sm;
         }
 
         public void ShowResult(ActivityResult result, CharacterState character)
@@ -142,7 +147,7 @@ namespace MagicGirls.UI.Screens
 
         private void OnContinueClicked()
         {
-            _uiManager.HideOverlay(this);
+            _screenManager.HideOverlay(this);
         }
 
         public override void Show() { }
